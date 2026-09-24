@@ -51,7 +51,7 @@ router.put('/', requireAuth, async (req: AuthenticatedRequest, res) => {
     if (!parseResult.success) {
       res.status(400).json({
         success: false,
-        error: parseResult.error.errors[0]?.message || 'Invalid profile information'
+        error: parseResult.error.issues[0]?.message || 'Invalid profile information'
       });
       return;
     }

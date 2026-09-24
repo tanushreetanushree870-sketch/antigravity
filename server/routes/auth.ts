@@ -13,7 +13,7 @@ router.post('/register', async (req, res) => {
     if (!parseResult.success) {
       res.status(400).json({
         success: false,
-        error: parseResult.error.errors[0]?.message || 'Invalid input data'
+        error: parseResult.error.issues[0]?.message || 'Invalid input data'
       });
       return;
     }
@@ -86,7 +86,7 @@ router.post('/login', async (req, res) => {
     if (!parseResult.success) {
       res.status(400).json({
         success: false,
-        error: parseResult.error.errors[0]?.message || 'Invalid email or password'
+        error: parseResult.error.issues[0]?.message || 'Invalid email or password'
       });
       return;
     }

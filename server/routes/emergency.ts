@@ -14,7 +14,7 @@ router.post('/analyze', async (req, res) => {
     if (!parseResult.success) {
       res.status(400).json({
         success: false,
-        error: parseResult.error.errors[0]?.message || 'Invalid emergency description'
+        error: parseResult.error.issues[0]?.message || 'Invalid emergency description'
       });
       return;
     }
@@ -76,7 +76,7 @@ router.post('/reports', optionalAuth, async (req: AuthenticatedRequest, res) => 
     if (!parseResult.success) {
       res.status(400).json({
         success: false,
-        error: parseResult.error.errors[0]?.message || 'Invalid report data'
+        error: parseResult.error.issues[0]?.message || 'Invalid report data'
       });
       return;
     }
